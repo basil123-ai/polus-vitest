@@ -1,0 +1,13 @@
+<section class="post-list">
+  <h2>Posts from JSONPlaceholder</h2>
+
+  <p *ngIf="loading" class="status">Loading posts...</p>
+  <p *ngIf="error" class="status error">{{ error }}</p>
+
+  <ul *ngIf="!loading && !error">
+    <li *ngFor="let post of posts">
+      <strong>{{ post.title }}</strong>
+      <span> — {{ post.body }}</span>
+    </li>
+  </ul>
+</section>
