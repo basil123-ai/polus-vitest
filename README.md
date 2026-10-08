@@ -16,7 +16,15 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This project uses **Vitest** (not Karma).
+
+```bash
+npm test               # one run
+npm run test:watch     # watch mode
+npm run test:coverage  # coverage report
+```
+
+Setup record: [VITEST_ONLY_SETUP.md](./VITEST_ONLY_SETUP.md).
 
 ## Running end-to-end tests
 
