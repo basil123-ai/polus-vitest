@@ -9,7 +9,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['src/test-setup.ts'],
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    reporters: ['default'],
+    reporters: process.env.GITHUB_ACTIONS
+      ? ['default', 'github-actions']
+      : ['default'],
     pool: 'forks',
     poolOptions: {
       forks: {
