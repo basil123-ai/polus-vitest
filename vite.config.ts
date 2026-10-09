@@ -20,7 +20,16 @@ export default defineConfig({
     },
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'html'],
+      reportsDirectory: './coverage',
+      reporter: ['text', 'html', 'json', 'json-summary'],
+      include: ['src/**/*.ts'],
+      exclude: [
+        'src/**/*.spec.ts',
+        'src/test-setup.ts',
+        'src/setup-zone.ts',
+        'src/polyfills.ts',
+        'src/environments/**',
+      ],
     },
   },
 });
