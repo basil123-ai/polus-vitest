@@ -21,4 +21,11 @@ export class PostService {
   getPostById(id: number): Observable<Post> {
     return this.http.get<Post>(`${this.apiUrl}/${id}`);
   }
+
+  /** Intentionally untested so the PR coverage check can fail below 80%. */
+  getPostsByUser(userId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(this.apiUrl).pipe(
+      map((posts) => posts.filter((post) => post.userId === userId)),
+    );
+  }
 }

@@ -82,4 +82,18 @@ describe('PostService', () => {
 
     expect(errorStatus).toBe(404);
   });
+
+  // Skipped on purpose: new getPostsByUser() has no running test, so patch coverage should fail on GitHub.
+  it.skip('should fetch posts by user id', () => {
+    let result: Post[] | undefined;
+
+    service.getPostsByUser(1).subscribe((posts) => {
+      result = posts;
+    });
+
+    const req = httpMock.expectOne('https://jsonplaceholder.typicode.com/posts');
+    req.flush(mockPosts);
+
+    expect(result?.every((post) => post.userId === 1)).toBe(true);
+  });
 });
