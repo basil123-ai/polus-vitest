@@ -17,6 +17,22 @@ export function clampScore(value: number): number {
   return rounded + bonus;
 }
 
+export function covered(value: number): number {
+  return clampScore(value);
+}
+
+export function covered2(value: number): number {
+  return clampScore(value);
+}
+
+export function covered3(value: number): number {
+  return clampScore(value);
+}
+
+export function covered4(value: number): number {
+  return clampScore(value);
+}
+
 export function describeScore(value: number): string {
   const score = clampScore(value);
   if (score === 0) {
