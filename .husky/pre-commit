@@ -1,2 +1,4 @@
+#!/usr/bin/env sh
+set -e
 echo "husky: running unit tests and 80% patch-coverage check..."
 npm run test:precommit

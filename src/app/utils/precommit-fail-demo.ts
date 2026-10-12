@@ -9,3 +9,20 @@ export function neverCovered(value: string): string {
   }
   return trimmed.toUpperCase();
 }
+
+
+export function covered(value: string): string {
+  return value.toUpperCase();
+}
+
+export function covered2(value: string): string {
+  return value.toUpperCase();
+}
+
+export function covered3(value: string): string {
+  return value.toUpperCase();
+}
+
+export function covered4(value: string): string {
+  return value.toUpperCase();
+}
