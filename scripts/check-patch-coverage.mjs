@@ -155,7 +155,10 @@ function main() {
   const range = `${base}...HEAD`;
   let diff = '';
   try {
-    diff = git(`diff -U0 --no-color ${range}`);
+    // Three-dot: commits on this branch. Also include unstaged/uncommitted source so local checks match GitHub after push.
+    const committed = git(`diff -U0 --no-color ${range}`);
+    const working = git(`diff -U0 --no-color HEAD`);
+    diff = [committed, working].filter(Boolean).join('\n');
   } catch (error) {
     console.error(`Could not diff against ${base}. Fetch the base branch first.`);
     console.error(error.stderr || error.message);
