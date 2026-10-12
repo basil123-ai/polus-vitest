@@ -9,7 +9,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['src/test-setup.ts'],
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    reporters: ['default'],
+    reporters: process.env.GITHUB_ACTIONS
+      ? ['default', 'github-actions']
+      : ['default'],
     pool: 'forks',
     poolOptions: {
       forks: {
@@ -18,7 +20,16 @@ export default defineConfig({
     },
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'html'],
+      reportsDirectory: './coverage',
+      reporter: ['text', 'html', 'json', 'json-summary'],
+      include: ['src/**/*.ts'],
+      exclude: [
+        'src/**/*.spec.ts',
+        'src/test-setup.ts',
+        'src/setup-zone.ts',
+        'src/polyfills.ts',
+        'src/environments/**',
+      ],
     },
   },
 });
